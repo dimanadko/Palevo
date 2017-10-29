@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+body {
+  background: rgba(52, 152, 219,1.0);
+  padding: 80px 0 0 0;
+}
+
+body, input, button, select {
+  font-family: 'Roboto', sans-serif;
+}
+
+
+header {
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  padding: 15px;
+  background: rgba(225,225,225,0.3);
+}
+
+header input {
+  width: 100%;
+  height: 50px;
+  float: left;
+  color: rgba(44, 62, 80,1.0);
+  font-size: 15px;
+  font-weight: 600;
+  text-indent: 18px;
+  padding: 0 185px 0 0;
+  background: rgba(236, 240, 241,1.0);
+  border-radius: 5px 25px 25px 5px;
+  border: 0px;
+  box-shadow: none;
+  outline: none;
+  cursor: text;
+}
+
+header select {
+  width: 180px;
+  height: 50px;
+  padding-right: 60px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 2;
+
+  font-weight: 600;
+  font-size: 10px;
+
+  border-radius: 5px 25px 25px 5px;
+  background: rgba(189, 195, 199,1.0);
+  border: 0px;
+  box-shadow: none;
+  outline: none;
+  cursor: pointer;
+
+}
+
+header button {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 2;
+  border-radius: 25px;
+  border: 0px;
+}
+
+header button img {
+  width: 30px;
+  height: 30px;
+}
+
+.container {
+  width: 100%;
+  float: left;
+  padding: 15px;
+  background: #fff
+}
