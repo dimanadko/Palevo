@@ -46,4 +46,4 @@ function nextClassIs(subj) {
 }
 
 
-apendHomeWork('Dm', 'p3 #71', '');
+apendHomeWork('Programming', 'Dopishi etu progu', '');
