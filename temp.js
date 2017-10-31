@@ -8,7 +8,7 @@ function NextClassIs(subj){
   let TimeTable = JSON.parse(fs.readFileSync('Timetable.json','utf8'));
 
   let i = 0;
-  let days_to_prepare;
+  let daysToPrepare;
   let breaker = 'False';
   let k = 0;
 
@@ -20,14 +20,14 @@ function NextClassIs(subj){
     let j = 0;
     for (j of TimeTable[k])
       if (subj === j){
-        days_to_prepare = i;
+        daysToPrepare = i;
         breaker = 'True'
       }
       ++i;
     }
   let nextClass= new Date();
-  nextClass.setDate(today.getDate() + days_to_prepare);
-  console.log(days_to_prepare);
+  nextClass.setDate(today.getDate() + daysToPrepare);
+  console.log(daysToPrepare);
   console.log(today.toDateString());
   console.log(nextClass.toDateString());
 }

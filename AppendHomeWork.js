@@ -4,46 +4,47 @@ const fs = require('fs');
 
 function apendHomeWork(subj, task, deadline) {
 
-  const data_read = fs.readFileSync('Data.json', 'utf8');
-  const TasksToDo = JSON.parse(data_read);
+  const dataRead = fs.readFileSync('data.json');
+  const TasksToDo = JSON.parse(dataRead);
 
-  if (!Object.keys(TasksToDo).includes(subj))
-    throw ('No such subject exist');
+  if (!Object.keys(TasksToDo).includes(subj)) {
+    throw new Error('No such subject exist');
+  }
 
-  if (deadline === '') deadline = nextClassIs(subj);
+  if (!deadline) deadline = nextClassIs(subj);
 
-  TasksToDo[subj].push({ 'task': task, 'deadline': deadline });
-  fs.writeFileSync('Data.json', JSON.stringify(TasksToDo));
+  TasksToDo[subj].push({ task, deadline });
+  fs.writeFileSync('data.json', JSON.stringify(TasksToDo));
   console.log(TasksToDo);
 }
 
 function nextClassIs(subj) {
   const today = new Date();
   const weekday = today.getDay();
-  const TimeTable = JSON.parse(fs.readFileSync('Timetable.json', 'utf8'));
+  const TimeTable = JSON.parse(fs.readFileSync('timetable.json', 'utf8'));
 
   let i = 0;
-  let days_to_prepare;
-  let breaker = 'False';
-  let k = 0;
+  let daysToPrepare;
+  let breaker = false;
+  let currentDay;
+  let currentSubject;
 
-  while (breaker === 'False') {
-    k = weekday + i;
-    if (k > 6) k=k-7;
-    let j = 0;
-    for (j of TimeTable[k])
-      if (subj === j) {
-        days_to_prepare = i;
-        breaker = 'True';
+  while (breaker === false) {
+    currentDay = (weekday + i) % 7;
+    const dailyTimetable  = TimeTable[currentDay];
+    for (currentSubject of dailyTimetable)
+      if (subj === currentSubject) {
+        daysToPrepare = i;
+        breaker = true;
       }
     ++i;
   }
   const nextClass = new Date();
-  nextClass.setDate(today.getDate() + days_to_prepare);
-  const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+  nextClass.setDate(today.getDate() + daysToPrepare);
+  const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
   console.log(nextClass.toLocaleString('ru-Ru', options));
   return nextClass.toLocaleString('ru-Ru', options);
 }
 
 
-apendHomeWork('Programming', 'Dopishi etu progu', '');
+apendHomeWork('Matan Lection', 'Dopishi etu Progu s norm datoy', '');

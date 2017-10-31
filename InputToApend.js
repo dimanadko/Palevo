@@ -15,8 +15,8 @@ rl.question('What do you think of Node.js? ', function (input){
 
 function DataFileOpen(subj,task,deadline) {
   fs.open ('Data.json', 'r', 7777, );
-  // TasksToDo = json.parse(data_read)
-  // console.log(data_read);
+  // TasksToDo = json.parse(dataRead)
+  // console.log(dataRead);
   // console.log("1"+TasksToDo);
 
 }
